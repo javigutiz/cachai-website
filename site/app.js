@@ -52,7 +52,7 @@ document.querySelectorAll('[data-project]').forEach(button => {
     const detail = document.createElement('p');
     detail.textContent = project.detail;
     const link = document.createElement('a');
-    link.href = 'mailto:danteloi1993@gmail.com?subject=' + encodeURIComponent(t('Let’s talk about ') + project.title);
+    link.href = 'mailto:dante.loi@proton.me?subject=' + encodeURIComponent(t('Let’s talk about ') + project.title);
     link.textContent = t('Ask us about this work');
     const actionIcon = document.createElement('span');
     actionIcon.className = 'action-icon';
@@ -84,12 +84,12 @@ dialog?.addEventListener('click', event => {
 dialog?.addEventListener('close', () => previousFocus?.focus());
 
 const formCopy = (en, es) => locale === 'es' ? es : en;
-const sendEndpoint = 'https://formsubmit.co/ajax/danteloi1993@gmail.com';
+const sendEndpoint = 'https://formsubmit.co/ajax/dante.loi@proton.me';
 async function sendContactForm(form, note, payload) {
   if (form.dataset.sending === 'true' || !form.reportValidity()) return false;
   if (form.querySelector('[name="_honey"]').value) return false;
   if (!['http:', 'https:'].includes(window.location.protocol)) {
-    note.textContent = formCopy('Open the website through a web server to send this form, or email danteloi1993@gmail.com.', 'Abre la web desde un servidor para enviar el formulario, o escribe a danteloi1993@gmail.com.');
+    note.textContent = formCopy('Open the website through a web server to send this form, or use an email link on this page.', 'Abre la web desde un servidor para enviar el formulario, o utiliza un enlace de correo de esta página.');
     return false;
   }
   form.dataset.sending = 'true';
@@ -110,14 +110,14 @@ async function sendContactForm(form, note, payload) {
     });
     const data = await response.json();
     if (/activat|confirm.*email|verify.*email/i.test(String(data.message || ''))) {
-      note.textContent = formCopy('Email delivery is awaiting activation. Please contact danteloi1993@gmail.com directly for now.', 'El envío de correo está pendiente de activación. Por ahora, escribe directamente a danteloi1993@gmail.com.');
+      note.textContent = formCopy('Email delivery is awaiting activation. Please use an email link on this page for now.', 'El envío de correo está pendiente de activación. Por ahora, utiliza un enlace de correo de esta página.');
       return false;
     }
     if (!response.ok || !(data.success === true || data.success === 'true')) throw new Error('Submission rejected');
     note.textContent = formCopy('Message submitted. We’ll reply by email.', 'Mensaje enviado. Te responderemos por correo.');
     return true;
   } catch {
-    note.textContent = formCopy('We couldn’t confirm the submission. Your details have been kept. Try again or email danteloi1993@gmail.com; retrying may send a duplicate.', 'No hemos podido confirmar el envío. Tus datos se han conservado. Inténtalo de nuevo o escribe a danteloi1993@gmail.com; un nuevo intento podría duplicar el mensaje.');
+    note.textContent = formCopy('We couldn’t confirm the submission. Your details have been kept. Try again or use an email link on this page; retrying may send a duplicate.', 'No hemos podido confirmar el envío. Tus datos se han conservado. Inténtalo de nuevo o utiliza un enlace de correo de esta página; un nuevo intento podría duplicar el mensaje.');
     return false;
   } finally {
     clearTimeout(timeout);
