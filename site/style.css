@@ -126,3 +126,5 @@
 
 /* Automatic contact forms. */
 .form-honeypot{display:none!important}#brief-form input:not(.form-honeypot){width:100%;min-width:0;border:1px solid #7e9eaf;padding:13px 15px;background:#f1f8fa;color:var(--ink);font:inherit}form[aria-busy="true"] button{cursor:wait;opacity:.65}.form-note:empty{display:none}.form-note a{text-decoration:underline;text-underline-offset:3px}
+
+.privacy-summary{font-family:var(--sans);font-size:12px;line-height:1.65;letter-spacing:0;max-width:65ch}.legal-page li{margin-block:12px;color:var(--muted);line-height:1.7}
