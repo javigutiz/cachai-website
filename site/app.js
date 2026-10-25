@@ -52,7 +52,7 @@ document.querySelectorAll('[data-project]').forEach(button => {
     const detail = document.createElement('p');
     detail.textContent = project.detail;
     const link = document.createElement('a');
-    link.href = 'mailto:dante.loi@proton.me?subject=' + encodeURIComponent(t('Let’s talk about ') + project.title);
+    link.href = 'mailto:dante.loi@cachai.eu?subject=' + encodeURIComponent(t('Let’s talk about ') + project.title);
     link.textContent = t('Ask us about this work');
     const actionIcon = document.createElement('span');
     actionIcon.className = 'action-icon';
@@ -84,7 +84,7 @@ dialog?.addEventListener('click', event => {
 dialog?.addEventListener('close', () => previousFocus?.focus());
 
 const formCopy = (en, es) => locale === 'es' ? es : en;
-const sendEndpoint = 'https://formsubmit.co/ajax/dante.loi@proton.me';
+const sendEndpoint = 'https://formsubmit.co/ajax/dante.loi@cachai.eu';
 async function sendContactForm(form, note, payload) {
   if (form.dataset.sending === 'true' || !form.reportValidity()) return false;
   if (form.querySelector('[name="_honey"]').value) return false;

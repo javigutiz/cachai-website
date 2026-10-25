@@ -128,3 +128,7 @@
 .form-honeypot{display:none!important}#brief-form input:not(.form-honeypot){width:100%;min-width:0;border:1px solid #7e9eaf;padding:13px 15px;background:#f1f8fa;color:var(--ink);font:inherit}form[aria-busy="true"] button{cursor:wait;opacity:.65}.form-note:empty{display:none}.form-note a{text-decoration:underline;text-underline-offset:3px}
 
 .privacy-summary{font-family:var(--sans);font-size:12px;line-height:1.65;letter-spacing:0;max-width:65ch}.legal-page li{margin-block:12px;color:var(--muted);line-height:1.7}
+
+.footer-legal{justify-content:space-between}.footer-legal .footer-legal-title{font-size:12px;font-weight:600;letter-spacing:0;line-height:1.5;flex-shrink:0}.footer-legal nav{gap:12px 24px}.footer-legal a{display:inline-block;padding-block:6px}@media(max-width:740px){.footer-legal nav{flex-direction:column;gap:4px}}
+
+.legal-page h3{font-size:18px;line-height:1.4;letter-spacing:-.01em;margin:24px 0 8px}.legal-page p{overflow-wrap:anywhere}.legal-updated{margin-top:40px!important;padding-top:16px;border-top:1px solid var(--line);font:12px/1.6 var(--mono);color:var(--muted)}
