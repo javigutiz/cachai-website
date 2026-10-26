@@ -1,4 +1,4 @@
-const locale = document.documentElement.lang === "es" ? "es" : "en";
+const locale = ["en", "es", "it"].includes(document.documentElement.lang) ? document.documentElement.lang : "en";
 const spanishCopy = {
   "A Cachai product": "Un producto de Cachai",
   "Your climbing, from the wall to your watch and phone.": "Tu escalada, de la pared a tu reloj y tu móvil.",
@@ -13,7 +13,27 @@ const spanishCopy = {
   "Please enter your name.": "Introduce tu nombre.",
   "20-minute meeting request — ": "Solicitud de reunión de 20 minutos - "
 };
-const t = text => locale === "es" ? (spanishCopy[text] ?? text) : text;
+const italianCopy = {
+  "A Cachai product": "Un prodotto Cachai",
+  "Your climbing, from the wall to your watch and phone.": "La tua arrampicata, dalla parete all’orologio e al telefono.",
+  "Rockstats brings rock climbing, bouldering, climbing training and multipitch activities to Garmin, with a companion experience on your phone.": "Rockstats porta arrampicata su roccia, boulder, allenamento e vie a più tiri su Garmin, con un’esperienza complementare sul telefono.",
+  "Interactive climbing": "Arrampicata interattiva",
+  "Turn any wall into an endless source of boulder problems.": "Trasforma qualsiasi parete in una fonte inesauribile di problemi di boulder.",
+  "Laserwall guides you through your training. Take a photo of the wall, create a problem, send it and share it.": "Laserwall ti guida durante l’allenamento. Fotografa la parete, crea un problema, invialo e condividilo.",
+  "Let’s talk about ": "Parliamo di ",
+  "Ask us about this work": "Chiedici informazioni su questo progetto",
+  "Cachai project enquiry — ": "Richiesta di progetto Cachai — ",
+  "Choose a time in the future.": "Scegli un orario futuro.",
+  "Please enter your name.": "Inserisci il tuo nome.",
+  "20-minute meeting request — ": "Richiesta di incontro di 20 minuti — ",
+  "Open the website through a web server to send this form, or use an email link on this page.": "Apri il sito tramite un server web per inviare questo modulo, oppure usa un link email presente nella pagina.",
+  "Sending…": "Invio in corso…",
+  "Email delivery is awaiting activation. Please use an email link on this page for now.": "L’invio delle email è in attesa di attivazione. Per il momento, usa un link email presente nella pagina.",
+  "Message submitted. We’ll reply by email.": "Messaggio inviato. Ti risponderemo via email.",
+  "We couldn’t confirm the submission. Your details have been kept. Try again or use an email link on this page; retrying may send a duplicate.": "Non è stato possibile confermare l’invio. I tuoi dati sono stati conservati. Riprova o usa un link email presente nella pagina; un nuovo tentativo potrebbe inviare un duplicato.",
+  "Please enter your name and a message.": "Inserisci il tuo nome e un messaggio."
+};
+const t = text => ({ es: spanishCopy, it: italianCopy }[locale]?.[text] ?? text);
 
 const copyrightYear = document.getElementById('year');
 if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
@@ -83,7 +103,7 @@ dialog?.addEventListener('click', event => {
 });
 dialog?.addEventListener('close', () => previousFocus?.focus());
 
-const formCopy = (en, es) => locale === 'es' ? es : en;
+const formCopy = (en, es) => locale === 'es' ? es : t(en);
 const sendEndpoint = 'https://formsubmit.co/ajax/dante.loi@cachai.eu';
 async function sendContactForm(form, note, payload) {
   if (form.dataset.sending === 'true' || !form.reportValidity()) return false;
@@ -156,7 +176,7 @@ if (meetingDialog) {
   let month = new Date();
   month = new Date(month.getFullYear(), month.getMonth(), 1);
   let selected;
-  document.getElementById('meeting-timezone').textContent = locale === "es" ? `Las horas se muestran en tu zona horaria: ${zone}. Elige la hora que prefieras; confirmaremos la disponibilidad por correo.` : `Times are in your timezone: ${zone}. Choose a preferred time; availability is confirmed by email.`;
+  document.getElementById('meeting-timezone').textContent = locale === "it" ? `Gli orari sono nel tuo fuso orario: ${zone}. Scegli l’orario che preferisci; confermeremo la disponibilità via email.` : locale === "es" ? `Las horas se muestran en tu zona horaria: ${zone}. Elige la hora que prefieras; confirmaremos la disponibilidad por correo.` : `Times are in your timezone: ${zone}. Choose a preferred time; availability is confirmed by email.`;
   function renderCalendar() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -222,7 +242,7 @@ if (meetingDialog) {
       return;
     }
     const formatTime = date => date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
-    const summary = `${dateLabel.format(start)} · ${formatTime(start)} – ${formatTime(end)} (${zone}) · ${locale === "es" ? "20 minutos" : "20 minutes"}`;
+    const summary = `${dateLabel.format(start)} · ${formatTime(start)} – ${formatTime(end)} (${zone}) · ${locale === "it" ? "20 minuti" : locale === "es" ? "20 minutos" : "20 minutes"}`;
     const sent = await sendContactForm(form, note, {
       name,
       email: document.getElementById('meeting-email').value.trim(),
@@ -246,4 +266,33 @@ if (meetingDialog) {
     renderCalendar();
     time.focus();
   });
+}
+
+// Manual capability carousel. Static HTML remains readable if JavaScript is unavailable.
+const capabilitySection = document.querySelector('.capabilities');
+if (capabilitySection) {
+  const slides = [...capabilitySection.querySelectorAll('.capability-slide')];
+  const selectors = [...capabilitySection.querySelectorAll('[data-capability]')];
+  let current = 0;
+  function showCapability(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.hidden = i !== current; });
+    selectors.forEach((button, i) => button.setAttribute('aria-pressed', String(i === current)));
+  }
+  selectors.forEach((button, i) => button.addEventListener('click', () => showCapability(i)));
+  capabilitySection.querySelector('.capability-selector').addEventListener('keydown', event => {
+    const index = selectors.indexOf(event.target);
+    if (index < 0) return;
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % slides.length;
+    else if (event.key === 'ArrowLeft') next = (index + slides.length - 1) % slides.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = slides.length - 1;
+    else return;
+    event.preventDefault();
+    showCapability(next);
+    selectors[next].focus();
+  });
+  showCapability(0);
+  capabilitySection.querySelector('.capability-selector').hidden = false;
 }

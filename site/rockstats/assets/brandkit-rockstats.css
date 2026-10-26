@@ -1,0 +1,35 @@
+/* Rockstats visual styling. */
+/* App canvas is chalk; only chart plots retain their validated near-white surface. */
+.phone[data-theme="light"]{background:var(--brand-chalk)}
+.phone{--preview-activity:var(--activity-rock-climbing)}
+/* Keep the handset frame steady while activity-specific content changes. */
+.phone{min-height:657px;display:flex;flex-direction:column}
+.phone-note{margin-top:auto}
+@media(max-width:640px){.phone{min-height:676px}}
+@media(max-width:360px){.phone{min-height:721px}}
+.phone .activity-chip{display:flex;width:100%;min-height:40px;padding:8px 10px;border-radius:6px;background:var(--preview-activity);color:var(--brand-ink);font-size:11px}
+.phone .phone-header{border-bottom:3px solid var(--preview-activity);padding-bottom:12px}
+.phone[data-theme="light"] #climb-chart{background:var(--chart-surface-light);border-radius:8px;padding:12px}
+.wordmark{white-space:nowrap}
+.activity-art .activity-icon-blank{display:block;width:72px;height:72px}
+.sidebar .brand{gap:8px}
+.sidebar .brand-mark{width:34px;height:34px}
+.sidebar .wordmark{font-size:26px;letter-spacing:-1.5px}
+.sidebar .eyebrow{font-size:8px}
+.name-note .wordmark{font-size:54px;letter-spacing:-3px}
+.primary-lockup .wordmark{font-size:58px;letter-spacing:-3.5px}
+.primary-lockup .brand-mark{width:150px;height:150px}
+.primary-lockup .lockup-brand{gap:18px;max-width:100%;flex-wrap:wrap;justify-content:center}
+.photo-label .wordmark{font-size:36px;letter-spacing:-2px}
+.closing{flex-wrap:wrap}
+.closing .wordmark{font-size:46px;letter-spacing:-2.5px}
+@media(max-width:1150px){.sidebar .brand-mark{width:28px;height:28px}.sidebar .wordmark{font-size:24px}.primary-lockup .lockup-brand{flex-direction:column;gap:12px}.primary-lockup{padding:28px 20px 50px}.primary-lockup .wordmark{font-size:48px;letter-spacing:-2.5px}.primary-lockup .brand-mark{width:112px;height:112px}.name-note{grid-template-columns:1fr}}
+@media(max-width:640px){.sidebar .wordmark{font-size:24px}.sidebar nav{min-width:0}.primary-lockup .wordmark{font-size:46px;letter-spacing:-2px}.name-note .wordmark{font-size:54px;letter-spacing:-3px}.closing .wordmark{font-size:38px}.photo-label .wordmark{font-size:32px}}
+@media(max-width:360px){.primary-lockup .wordmark{font-size:40px!important}.closing .wordmark{font-size:32px}.photo-label .brand-mark{width:40px;height:40px}.photo-label .brand-signature{gap:10px}.photo-label .wordmark{font-size:30px}}
+.website-reference{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,310px);gap:32px;align-items:center;margin-top:28px;padding:32px;background:#EAE6DD;overflow:hidden}
+.website-reference-copy{padding:12px 0;min-width:0}.website-reference-copy>.mono{font-size:10px;color:var(--brand-muted)}.website-reference-copy h3{font-size:clamp(48px,6vw,86px);letter-spacing:-.065em;line-height:.95;margin:26px 0}.website-reference-copy h3 .orange{color:#BB411A}.website-reference-copy p{font-size:16px;line-height:1.55;max-width:480px;margin-bottom:28px}.website-reference-link{display:inline-flex;gap:28px;align-items:center;padding:14px 18px;background:var(--brand-orange);color:var(--brand-ink);font-size:12px;font-weight:700;text-decoration:none}.website-reference-link:hover{background:var(--activity-rock-climbing)}
+.website-reference-shot{display:block;max-height:460px;overflow:hidden;box-shadow:0 14px 32px #1A1A1924}.website-reference-shot img{display:block;width:100%;height:auto}
+.website-guidance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:24px 0}.website-guidance>div{border-top:1px solid var(--brand-line);padding-top:17px}.website-guidance .mono{font-size:10px;color:var(--brand-muted)}.website-guidance p{font-size:13px;line-height:1.6;margin-top:11px}.website-guidance strong{color:var(--brand-ink)}
+.indoor-stats{margin:16px 0}.indoor-stats>div{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--preview-line);font-size:11px}.indoor-stats dd{margin:0;font-family:var(--font-data)}.indoor-stats dt{color:var(--preview-muted)}
+@media(max-width:900px){.website-guidance{grid-template-columns:1fr}}
+@media(max-width:640px){.website-reference{grid-template-columns:minmax(0,1fr);padding:24px;gap:28px}.website-reference-copy h3{font-size:clamp(48px,13vw,70px)}.website-reference-copy p{font-size:14px}.website-reference-shot{max-width:250px;max-height:330px;margin:auto}}

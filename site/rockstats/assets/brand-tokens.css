@@ -1,0 +1,25 @@
+/* Rockstats logo system. See Brandkit.Rockstats.html for approved parent/activity roles. */
+:root {
+  --brand-chalk: #F4F1EA;
+  --brand-ink: #1A1A19;
+  --brand-orange: #FF6B35;
+  --brand-muted: #65645E;
+  --brand-line: #D7D3CA;
+  --activity-boulder: #D8CAEB;
+  --activity-rock-climbing: #F2B493;
+  --activity-climbing-training: #C9D7AE;
+  --activity-multipitch: #B8D5E5;
+  --chart-sent-light: #D95926;
+  --chart-attempted-light: #87548A;
+  --chart-sent-dark: var(--chart-sent-light);
+  --chart-attempted-dark: var(--chart-attempted-light);
+  --chart-attempt-hatch-light: #513257;
+  --chart-attempt-hatch-dark: var(--chart-attempt-hatch-light);
+  --chart-surface-light: #FCFCFB;
+  --chart-surface-dark: #1A1A19;
+  --font-heading: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Arial, sans-serif;
+  --font-data: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --radius-card: 12px;
+  --space-unit: 4px;
+}
