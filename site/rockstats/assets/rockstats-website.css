@@ -52,3 +52,56 @@
 .watch-demo{padding:0;margin:20px auto 0;filter:drop-shadow(0 12px 10px #141a1228)}
 .watch-image{display:block;width:278px;max-width:100%;height:auto;object-fit:contain}
 .watch-size{margin-top:10px}
+
+/* Dashboard preview adapted from the supplied Rockstats app screenshot. */
+.phone.dashboard-phone{max-width:350px;height:760px;min-height:0;padding:14px 12px 10px;display:flex;gap:0;overflow:hidden;background:#F4F1EA;color:#171916;--dashboard-card:#ECE9E1;--dashboard-chart:#FCFCFB;--dashboard-border:#D5D3CB;--dashboard-muted:#62635C;--dashboard-teal:#20766C;--dashboard-purple:#784B7E;--dashboard-nav:#CBD9B1;font-family:Arial,Helvetica,sans-serif}
+.dashboard-phone[data-theme="dark"]{background:#1A1A19;color:#F4F1EA;--dashboard-card:#292A27;--dashboard-chart:#20221F;--dashboard-border:#42453D;--dashboard-muted:#C3C5BC;--dashboard-teal:#73C7B7;--dashboard-purple:#C599CE;--dashboard-nav:#45533B}
+.dashboard-phone .phone-status{flex:none;margin:0 7px 20px;font-size:11px;font-weight:600}
+.dashboard-brand{display:flex;align-items:center;gap:12px;margin:4px 2px 18px;flex:none}
+.dashboard-brand>img{width:34px;height:34px;object-fit:contain}
+.dashboard-brand .wordmark{font-family:Arial,Helvetica,sans-serif;font-size:32px;font-weight:900;letter-spacing:-1.8px;line-height:1.1}
+.dashboard-brand p{margin:4px 0 0;color:var(--dashboard-muted);font-size:11px;line-height:1.3}
+.dashboard-viewport{min-height:0;overflow:clip;flex:1;padding:0 1px 12px;pointer-events:none}
+
+.dashboard-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:0 0 14px}
+.dashboard-stat{min-width:0;background:var(--dashboard-card);border-radius:12px;padding:12px 11px;min-height:76px}
+.dashboard-stat>span{font-size:10px;line-height:1.25;display:block;text-transform:uppercase;color:var(--dashboard-muted)}
+.dashboard-stat strong{display:block;font-size:29px;line-height:1.18;letter-spacing:-.7px;font-weight:400;margin:3px 0 1px;white-space:nowrap}
+.dashboard-stat small{display:block;color:var(--dashboard-muted);font-size:10px;line-height:1.3;min-height:13px}
+.dashboard-chart-card{border:1px solid var(--dashboard-border);background:var(--dashboard-chart);border-radius:12px;padding:14px 12px;margin-bottom:14px}
+.dashboard-phone .dashboard-chart-card h4{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;letter-spacing:-.3px;line-height:1.2;margin:0}
+.dashboard-key{display:flex;gap:13px;color:var(--dashboard-muted);font-size:10px;margin:10px 0 12px}
+.dashboard-key>span{display:flex;align-items:center;gap:5px}
+.dashboard-key i{display:block;flex:none;width:8px;height:8px;background:var(--dashboard-purple)}
+.dashboard-key .dashboard-sent{border-radius:50%;background:var(--dashboard-teal)}
+.dashboard-pyramid{height:218px;position:relative;width:100%}
+.dashboard-progress p{font-size:10px;color:var(--dashboard-muted);margin:5px 0 12px;line-height:1.3}
+.dashboard-trend{height:120px;position:relative;width:100%}
+.dashboard-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));flex:none;padding:9px 0 6px;border-top:0;background:inherit;gap:1px}
+.dashboard-nav-item{text-align:center;min-width:0;color:var(--dashboard-muted)}
+.dashboard-nav-item>span{display:flex;align-items:center;justify-content:center;width:45px;height:27px;margin:0 auto 4px;border-radius:18px}
+.dashboard-nav-item img{width:19px;height:19px;opacity:.62}
+.dashboard-nav-item small{font-size:10px;line-height:1.3;display:block;letter-spacing:-.15px}
+.dashboard-nav-item.is-current{color:var(--dashboard-teal)}
+.dashboard-nav-item.is-current>span{background:var(--dashboard-nav)}
+.dashboard-nav-item.is-current img{opacity:1}
+.dashboard-phone[data-theme="dark"] .dashboard-nav-item img{filter:invert(1)}
+@media(max-width:640px){.phone.dashboard-phone{height:720px;padding:13px 10px 8px}}
+@media(max-width:360px){.phone.dashboard-phone{height:670px;padding:12px 8px 8px}.dashboard-brand .wordmark{font-size:28px}.dashboard-brand{gap:8px;margin-bottom:14px}.dashboard-stat{padding:10px 7px}.dashboard-stat>span{font-size:8px}.dashboard-stat strong{font-size:24px}.dashboard-stat small{font-size:9px}.dashboard-chart-card{padding:12px 8px}.dashboard-phone .dashboard-chart-card h4{font-size:14px}.dashboard-nav-item small{font-size:9px}.dashboard-nav-item>span{width:36px}.dashboard-pyramid{height:205px}}
+/* Fit the progress chart into the initial viewport while retaining scroll access. */
+.dashboard-phone .phone-status{margin-bottom:12px}
+.dashboard-brand{gap:9px;margin:2px 2px 14px}
+.dashboard-brand>img{width:39px;height:39px}
+.dashboard-brand .wordmark{font-size:28px}
+.dashboard-stat{padding:10px 10px;min-height:68px}
+.dashboard-stat strong{font-size:26px}
+.dashboard-pyramid{height:180px}
+@media(max-width:360px){.dashboard-brand .wordmark{font-size:25px}.dashboard-brand>img{width:32px;height:32px}.dashboard-stat{padding:9px 7px}.dashboard-stat strong{font-size:24px}.dashboard-pyramid{height:165px}}
+.dashboard-phone[data-theme="dark"] .dashboard-brand>img{border-radius:8px}
+
+/* One compact, static viewport for every activity; content is intentionally cropped. */
+.phone.dashboard-phone{width:100%;max-width:300px;height:650px;min-height:0;flex-shrink:0}
+@media(max-width:360px){.phone.dashboard-phone{height:560px}}
+.product-stage>.phone,.product-stage>.stage-notes{min-width:0}
+.stage-notes h3{overflow-wrap:anywhere}
+@media(max-width:640px){.product-stage{grid-template-columns:minmax(0,1fr)}}
